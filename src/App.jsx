@@ -222,7 +222,7 @@ const gearItems = [
     summary:
       "Flash de cabezal redondo para retrato, apoyo rapido en eventos y setups donde necesito una luz limpia y consistente.",
     specs: ["Cabezal redondo", "2980 mAh", "HSS", "Luz de modelado"],
-    imageUrl: "https://www.godox.com/static/upload/image/20240119/1705632485432159.jpg",
+    imageUrl: "https://www.kamera-express.nl/media/39bb849f-f866-4598-bc09-38ead22808f9/godox-speedlite-v1pro-canon.jpg",
     productUrl: "https://www.godox.com/product-b/V1Pro.html",
   },
   {
@@ -242,6 +242,7 @@ const gearItems = [
     summary:
       "Filtro UV de proteccion para mantener el frontal del objetivo mas protegido en exteriores y rodajes con movimiento.",
     specs: ["UV", "67 mm", "Cristal reforzado", "Proteccion frontal"],
+    imageUrl: "https://www.kamera-express.nl/media/e7f587bc-6fd3-4a6e-9448-6f35deb4fd9c/12379213.jpg",
     note: "El enlace recibido corresponde a un filtro UV de proteccion, no a un polarizador.",
     productUrl:
       "https://www.amazon.es/HOYA-UV-Filter-MkII-%C3%B867/dp/B09F3V8LFP",
