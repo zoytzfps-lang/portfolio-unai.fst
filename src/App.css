@@ -1251,7 +1251,7 @@
   }
 
   .photo-lightbox {
-    padding: 16px 12px;
+    padding: 16px 12px 28px;
   }
 
   .photo-lightbox-caption {
@@ -1263,7 +1263,11 @@
   }
 
   .photo-lightbox-image {
-    max-height: calc(100vh - 330px);
+    max-height: calc(100vh - 360px);
     border-radius: 20px;
+  }
+
+  .photo-lightbox-controls {
+    padding-bottom: 8px;
   }
 }
