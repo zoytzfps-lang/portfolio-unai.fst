@@ -181,6 +181,84 @@ const collaboratorProfiles = [
   },
 ];
 
+const gearItems = [
+  {
+    category: "Camara",
+    name: "Panasonic LUMIX S9",
+    model: "DC-S9E-K",
+    summary:
+      "Cuerpo full frame compacto para foto y video, pensado para trabajar ligero y moverme bien entre conciertos, retrato y piezas rapidas.",
+    specs: ["24,2 MP", "Full frame", "Video 6K / 4K", "Estabilizacion en cuerpo"],
+    imageUrl: "https://m.media-amazon.com/images/I/71shBLysGcL._AC_SY300_SX300_QL70_ML2_.jpg",
+    productUrl:
+      "https://www.amazon.es/Panasonic-DC-S9E-K-Fotograma-Completo-Estabilizaci%C3%B3n/dp/B0D5YLRFCY",
+  },
+  {
+    category: "Objetivo",
+    name: "Panasonic LUMIX S 20-60mm",
+    model: "S-R2060E",
+    summary:
+      "Zoom ligero y versatil para cubrir angular y plano medio sin cambiar de lente constantemente.",
+    specs: ["20-60 mm", "f/3.5-5.6", "Filtro 67 mm", "Sellado basico"],
+    imageUrl: "https://m.media-amazon.com/images/I/81rC-1EOtlL._AC_SX300_SY300_QL70_ML2_.jpg",
+    productUrl:
+      "https://www.amazon.es/Panasonic-LUMIX-S-R2060E-resistente-salpicaduras/dp/B08HJCGDT4",
+  },
+  {
+    category: "Objetivo",
+    name: "Sigma 70-200mm F2.8 DG DN OS | Sports",
+    model: "70-200mm f/2.8",
+    summary:
+      "Telezoom luminoso para directo, retrato comprimido y planos a distancia cuando necesito mas alcance y separacion.",
+    specs: ["70-200 mm", "f/2.8", "AF", "Estabilizacion optica"],
+    imageUrl: "https://m.media-amazon.com/images/I/519aABMpcbL._AC_SY300_SX300_QL70_ML2_.jpg",
+    productUrl:
+      "https://www.amazon.es/Sigma-Lente-Deportiva-70-200-f2-8/dp/B0CN1PCH1Y",
+  },
+  {
+    category: "Flash",
+    name: "Godox V1Pro",
+    model: "V1Pro",
+    summary:
+      "Flash de cabezal redondo para retrato, apoyo rapido en eventos y setups donde necesito una luz limpia y consistente.",
+    specs: ["Cabezal redondo", "2980 mAh", "HSS", "Luz de modelado"],
+    imageUrl: "https://www.godox.com/static/upload/image/20240119/1705632485432159.jpg",
+    productUrl: "https://www.godox.com/product-b/V1Pro.html",
+  },
+  {
+    category: "Luz continua",
+    name: "Jupio PowerLED 200A",
+    model: "JPL200A",
+    summary:
+      "Panel LED compacto para apoyo en video, retrato o detalle cuando necesito una solucion portable y directa.",
+    specs: ["200 LED", "3200-5600K", "CRI > 95", "4200 mAh"],
+    imageUrl: "https://dukefotografia.com/53608-cart_default/jupio-panel-led-200a-con-powerbank-jpl200a-jupio.jpg",
+    productUrl: "https://dukefotografia.com/video/jupio-panel-led-200a-con-powerbank-jpl200a-jupio.html",
+  },
+  {
+    category: "Filtro",
+    name: "HOYA HD MkII UV 67mm",
+    model: "67 mm",
+    summary:
+      "Filtro UV de proteccion para mantener el frontal del objetivo mas protegido en exteriores y rodajes con movimiento.",
+    specs: ["UV", "67 mm", "Cristal reforzado", "Proteccion frontal"],
+    note: "El enlace recibido corresponde a un filtro UV de proteccion, no a un polarizador.",
+    productUrl:
+      "https://www.amazon.es/HOYA-UV-Filter-MkII-%C3%B867/dp/B09F3V8LFP",
+  },
+  {
+    category: "Transporte",
+    name: "Lowepro Adventura BP 150 III",
+    model: "BP 150 III",
+    summary:
+      "Mochila compacta para llevar el equipo protegido, ordenado y listo para moverme entre localizaciones.",
+    specs: ["Acceso trasero", "Tablet 10\"", "2-3 lentes", "Tripode compacto"],
+    imageUrl:
+      "https://cdn.lowepro.com/media/catalog/product/cache/03fd8892b024dd7e7d63ccf8cf919d8c/c/a/camera-backpack-lowepro-adventura-lp37455-pww-side.jpg",
+    productUrl: "https://www.lowepro.com/us-en/adventura-bp-150-iii-black-lp37455-pww/",
+  },
+];
+
 function sortByNewest(items) {
   return [...items].sort(
     (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
@@ -530,11 +608,71 @@ function ArtistGrid() {
   );
 }
 
+function GearGrid({ items }) {
+  return (
+    <section className="gear-grid">
+      {items.map((item, index) => (
+        <MotionArticle
+          key={`${item.category}-${item.name}`}
+          className="gear-card"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.06 * index }}
+        >
+          <div className="gear-visual">
+            {item.imageUrl ? (
+              <img
+                src={item.imageUrl}
+                alt={`${item.name}, ${item.category.toLowerCase()}`}
+                className="gear-image"
+                loading="lazy"
+                decoding="async"
+                referrerPolicy="no-referrer"
+              />
+            ) : (
+              <div className="gear-image gear-image--fallback" aria-hidden="true">
+                {item.category.slice(0, 2).toUpperCase()}
+              </div>
+            )}
+          </div>
+
+          <div className="gear-copy">
+            <p className="gear-kicker">{item.category}</p>
+            <h2>{item.name}</h2>
+            <p className="gear-model">{item.model}</p>
+            <p>{item.summary}</p>
+
+            <div className="gear-specs">
+              {item.specs.map((spec) => (
+                <span key={spec} className="gear-spec-chip">
+                  {spec}
+                </span>
+              ))}
+            </div>
+
+            {item.note ? <p className="gear-note">{item.note}</p> : null}
+
+            <a
+              href={item.productUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="gear-link"
+            >
+              Ver referencia
+            </a>
+          </div>
+        </MotionArticle>
+      ))}
+    </section>
+  );
+}
+
 const navItems = [
   { label: "Videoclips y Visualizers", path: "/audiovisual" },
   { label: "Videoarte", path: "/videoarte" },
   { label: "Documental", path: "/documental" },
   { label: "Fotograf\u00edas", path: "/fotografias" },
+  { label: "Equipo", path: "/equipo" },
   { label: "Colaboraciones", path: "/artistas" },
   { label: "Contacto", path: "/contacto" },
 ];
@@ -752,6 +890,13 @@ const pageContent = {
       "Una selecci\u00f3n de sesiones fotogr\u00e1ficas donde el ritmo, la presencia del artista y la atm\u00f3sfera del directo marcan cada imagen.",
     sessions: photoSessions,
   },
+  equipo: {
+    eyebrow: "Setup de trabajo",
+    title: "Equipo",
+    intro:
+      "El material con el que trabajo ahora mismo, organizado como un setup compacto y flexible para videoclips, conciertos, retrato y piezas mas rapidas.",
+    gearItems,
+  },
   artistas: {
     eyebrow: "Colaboraciones",
     title: "¿Con quién he trabajado?",
@@ -794,6 +939,7 @@ const pageTitles = {
   "/videoarte": "Videoarte | Unai Fossati",
   "/documental": "Documental | Unai Fossati",
   "/fotografias": "Fotografías | Unai Fossati",
+  "/equipo": "Equipo | Unai Fossati",
   "/artistas": "¿Con quién he trabajado? | Unai Fossati",
   "/contacto": "Contacto | Unai Fossati",
 };
@@ -935,6 +1081,7 @@ function DetailPage({ pageKey }) {
   const isAudiovisual = pageKey === "audiovisual";
   const isVideoArtPage = pageKey === "videoarte";
   const isPhotographyPage = pageKey === "fotografias";
+  const isGearPage = pageKey === "equipo";
   const hasStandaloneVideos = Array.isArray(page.videos) && page.videos.length > 0;
   const isSingleFocusPage = pageKey === "documental";
 
@@ -1110,6 +1257,8 @@ function DetailPage({ pageKey }) {
             <PhotoSessionCarousel key={session.title} session={session} />
           ))}
         </section>
+      ) : isGearPage ? (
+        <GearGrid items={page.gearItems} />
       ) : pageKey === "contacto" ? (
         <section className="detail-grid">
           <MotionArticle
@@ -1219,6 +1368,7 @@ function AppLayout() {
                 path="/fotografias"
                 element={<DetailPage pageKey="fotografias" />}
               />
+              <Route path="/equipo" element={<DetailPage pageKey="equipo" />} />
               <Route path="/artistas" element={<DetailPage pageKey="artistas" />} />
               <Route path="/contacto" element={<DetailPage pageKey="contacto" />} />
               <Route path="*" element={<Navigate to="/" replace />} />
