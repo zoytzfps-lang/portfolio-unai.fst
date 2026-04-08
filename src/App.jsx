@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { createPortal } from "react-dom";
 import {
-  HashRouter,
+  BrowserRouter,
   NavLink,
   Navigate,
   Route,
@@ -788,6 +788,26 @@ const pageContent = {
   },
 };
 
+const pageTitles = {
+  "/": "Unai Fossati | Portfolio",
+  "/audiovisual": "Videoclips y Visualizers | Unai Fossati",
+  "/videoarte": "Videoarte | Unai Fossati",
+  "/documental": "Documental | Unai Fossati",
+  "/fotografias": "Fotografías | Unai Fossati",
+  "/artistas": "¿Con quién he trabajado? | Unai Fossati",
+  "/contacto": "Contacto | Unai Fossati",
+};
+
+function TitleManager() {
+  const location = useLocation();
+
+  useEffect(() => {
+    document.title = pageTitles[location.pathname] ?? "Unai Fossati | Portfolio";
+  }, [location.pathname]);
+
+  return null;
+}
+
 function Navigation() {
   return (
     <MotionHeader
@@ -1174,6 +1194,7 @@ function AppLayout() {
       <div className="ambient ambient-left" />
       <div className="ambient ambient-right" />
       <div className="site-frame">
+        <TitleManager />
         <Navigation />
         <AnimatePresence mode="wait">
           <MotionDiv
@@ -1211,8 +1232,8 @@ function AppLayout() {
 
 export default function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <AppLayout />
-    </HashRouter>
+    </BrowserRouter>
   );
 }
