@@ -1191,9 +1191,11 @@
   }
 
   .photo-lightbox-image {
-    width: 100%;
+    width: auto;
+    height: auto;
     max-width: 100%;
     max-height: calc(100vh - 360px);
+    object-fit: contain;
   }
 
   .photo-lightbox-controls {
@@ -1263,7 +1265,10 @@
   }
 
   .photo-lightbox-image {
+    width: auto;
+    height: auto;
     max-height: calc(100vh - 360px);
+    object-fit: contain;
     border-radius: 20px;
   }
 
