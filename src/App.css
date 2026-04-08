@@ -940,6 +940,13 @@
     grid-template-columns: 1fr;
   }
 
+  .detail-hero,
+  .detail-card,
+  .video-entry,
+  .photo-session-card {
+    min-width: 0;
+  }
+
   .video-stack {
     grid-template-columns: 1fr;
   }
@@ -951,6 +958,15 @@
 
   .photo-session-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .photo-session-card {
+    gap: 20px;
+  }
+
+  .photo-session-copy {
+    min-height: 0;
   }
 
   .artist-grid {
@@ -964,40 +980,52 @@
 
 @media (max-width: 720px) {
   .app-shell {
-    padding: 16px;
+    padding: 10px;
   }
 
   .site-frame {
-    min-height: calc(100vh - 32px);
-    padding: 22px 18px 26px;
-    border-radius: 24px;
+    min-height: calc(100vh - 20px);
+    padding: 18px 14px 22px;
+    border-radius: 22px;
+    overflow-x: clip;
   }
 
   .top-nav {
     justify-content: flex-start;
-    gap: 14px 18px;
-    padding-bottom: 14px;
+    gap: 12px 16px;
+    padding-bottom: 12px;
   }
 
   .nav-link {
-    font-size: 0.95rem;
+    font-size: 0.92rem;
   }
 
   .hero-layout,
   .detail-shell {
-    padding-top: 34px;
+    padding-top: 26px;
   }
 
   .info-card,
   .detail-hero,
   .detail-card {
-    padding: 24px 20px;
-    border-radius: 24px;
+    min-width: 0;
+    padding: 20px 16px;
+    border-radius: 22px;
   }
 
   .info-card h2,
   .detail-card h2 {
-    font-size: 1.35rem;
+    font-size: 1.24rem;
+    line-height: 1.16;
+  }
+
+  .detail-hero h1 {
+    font-size: clamp(2.5rem, 15vw, 4rem);
+    line-height: 0.98;
+  }
+
+  .detail-intro {
+    max-width: none;
   }
 
   .portrait-ring {
@@ -1008,11 +1036,73 @@
   .detail-card p,
   .detail-intro,
   .info-list li {
-    font-size: 0.96rem;
+    font-size: 0.94rem;
+    line-height: 1.72;
+  }
+
+  .video-stack,
+  .photo-session-grid {
+    margin-top: 18px;
+    gap: 20px;
+  }
+
+  .video-entry {
+    padding-top: 2px;
+  }
+
+  .video-title {
+    margin-bottom: 12px;
+    font-size: 1.06rem;
+  }
+
+  .video-title-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .video-title-link {
+    align-self: flex-start;
+    padding: 5px 10px;
+    font-size: 0.72rem;
+  }
+
+  .video-frame {
+    border-radius: 18px;
+  }
+
+  .video-caption {
+    margin-top: 14px;
+    padding: 14px;
+    border-radius: 16px;
+  }
+
+  .photo-session-card {
+    gap: 16px;
+  }
+
+  .photo-session-copy {
+    min-height: 0;
+  }
+
+  .photo-session-copy h2 {
+    margin-bottom: 10px;
+  }
+
+  .photo-carousel-stage,
+  .photo-carousel-image {
+    min-height: 240px;
+  }
+
+  .photo-carousel-stage {
+    aspect-ratio: 5 / 4;
+    border-radius: 20px;
   }
 
   .photo-carousel-thumbs {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
   }
 
   .artist-grid {
@@ -1021,11 +1111,14 @@
   }
 
   .photo-carousel-controls {
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
   }
 
   .photo-carousel-button {
-    width: 100%;
+    width: auto;
+    padding: 11px 14px;
   }
 
   .photo-location-tag,
@@ -1033,6 +1126,25 @@
   .photo-expand-hint {
     font-size: 0.74rem;
     padding: 8px 12px;
+  }
+
+  .photo-carousel-counter {
+    top: 12px;
+    left: 12px;
+  }
+
+  .photo-expand-hint {
+    top: 12px;
+    right: 12px;
+  }
+
+  .photo-location-tag {
+    right: 12px;
+    bottom: 12px;
+    max-width: calc(100% - 24px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .photo-lightbox-close {
@@ -1080,5 +1192,43 @@
 
   .photo-lightbox-thumbs-wrap {
     display: none;
+  }
+
+  .contact-value {
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-frame {
+    padding-inline: 12px;
+  }
+
+  .top-nav {
+    gap: 10px 14px;
+  }
+
+  .detail-hero,
+  .detail-card {
+    padding: 18px 14px;
+    border-radius: 20px;
+  }
+
+  .detail-hero h1 {
+    font-size: clamp(2.2rem, 14vw, 3.3rem);
+  }
+
+  .video-title {
+    font-size: 1rem;
+  }
+
+  .photo-carousel-stage,
+  .photo-carousel-image {
+    min-height: 220px;
+  }
+
+  .photo-carousel-thumbs {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
