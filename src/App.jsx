@@ -535,7 +535,7 @@ const navItems = [
   { label: "Videoarte", path: "/videoarte" },
   { label: "Documental", path: "/documental" },
   { label: "Fotograf\u00edas", path: "/fotografias" },
-  { label: "Artistas", path: "/artistas" },
+  { label: "Colaboraciones", path: "/artistas" },
   { label: "Contacto", path: "/contacto" },
 ];
 
