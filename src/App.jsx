@@ -65,6 +65,9 @@ const photoSessionConfig = {
   "fotos homenaje DANA paiporta": {
     hidden: true,
   },
+  videoarte: {
+    hidden: true,
+  },
 };
 
 const photoSessionOrder = [
