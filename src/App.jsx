@@ -179,6 +179,16 @@ const collaboratorProfiles = [
     profileUrl: "https://x.com/RevengeEC",
     imageUrl: "https://unavatar.io/x/RevengeEC",
   },
+  {
+    name: "KPI_WORLD",
+    profileUrl: "https://x.com/KPI_WORLD",
+    imageUrl: "https://unavatar.io/x/KPI_WORLD",
+  },
+  {
+    name: "ArticAcces",
+    profileUrl: "https://x.com/ArticAcces",
+    imageUrl: "https://unavatar.io/x/ArticAcces",
+  },
 ];
 
 const gearItems = [
