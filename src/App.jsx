@@ -175,9 +175,9 @@ const collaboratorProfiles = [
     imageUrl: "https://i.scdn.co/image/ab6761610000e5eb7e55d1addba114c5d2bfa921",
   },
   {
-    name: "RedRevenge",
-    profileUrl: "https://x.com/RedRevengeEC",
-    imageUrl: "https://unavatar.io/x/RedRevengeEC",
+    name: "RevengeEC",
+    profileUrl: "https://x.com/RevengeEC",
+    imageUrl: "https://unavatar.io/x/RevengeEC",
   },
 ];
 
